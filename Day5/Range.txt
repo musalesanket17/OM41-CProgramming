@@ -1,0 +1,197 @@
+			Negative number are represented in 2s Compliment format 
+
+			-1 + 1  --> 0 
+
+
+
+
+			1 --> 0001 binary 
+			-1 --> number is negative so calculate its 2s Compliment 
+
+		steps to find 2s Compliment 
+		
+		1. Find the binary of 1 
+			 0001 
+		2. Apply 1s Compliment to binary of 1 i.e 0001  
+		        0001 --> 1s Compliment --> 1110 
+		3. Apply 2s Complement i.e add 1 to 1110 
+				
+			1 1 1 0 
+		    +         1
+		      -----------
+			1 1 1 1 
+		so binary of -1 is 1111 
+
+		 -1 + 1 
+
+		1 1 1 1  --> ( binary of -1 ) 
+		0 0 0 1  --> ( binary of  1 )  
+	     -------------	 
+	        0 0 0 0  --> ans is 0 
+
+             -1 + 1 --> 0 
+
+		( How to do the binary addition ) 
+		( number system )  
+	 			
+			
+			
+		
+
+
+		
+		
+
+
+
+*******************************************************************************************************
+#include<stdio.h>
+int main()
+{
+	char ch=948; // 127 to -128 
+
+	printf("%d",ch); // -76 
+
+}
+
+o/p = 
+
+Equivalent of 948 binary - 1110110100		
+		
+		( 8 bit equivalent   = 1 0 1 1 0 1 0 0 ) 
+
+
+		char ( 8 bits = 1 for sign and 7 for storage)
+	       (sign)	
+		8  	7 	 6	  5 	 4 	 3 	 2 	 1 
+	        1       0        1        1      0       1       0       0 
+
+		MSB is 1 so number is negative ( need to find 2s compliment)
+
+--> 1s compliment --> 				1 0 1 1 0 1 0 0
+
+						0 1 0 0 1 0 1 1 
+				         +		      1
+					--------------------------------
+--> 2s compliment --> 				0 1 0 0	1 1 0 0	
+			Decimal equivalent is -76 
+
+II]
+#include<stdio.h>
+int main()
+{
+	char ch=890;
+
+	printf("%d",ch); // 127 to -128 
+
+}
+
+o/p = 
+
+Equivalent of 890 binary - 1101111010
+		
+		( 8 bit equivalent   = 0	1	1	1	1	0	1	0) 
+
+
+		char ( 8 bits = 1 for sign and 7 for storage)
+	       (sign)	
+		8  	7 	 6	  5 	 4 	 3 	 2 	 1 
+	        0       1        1        1      1       0       1       0 
+
+		MSB is 0 so number is positive ( no  need to find 2s compliment)
+		calculate the direct decimal equivalent of -->  0       1        1        1      1       0       1       0 
+		122 is the decimal equivalent 
+
+             
+		
+
+			
+*****************************************************************************************************************************************			
+				For unsigned
+
+
+#include<stdio.h>
+int main()
+{
+	unsigned char ch=948;
+
+	// unsigned -> 0 to 255 
+
+	printf("%d",ch);
+
+}
+
+o/p = 
+
+Equivalent of 948 binary - 1110110100		
+		
+		( 8 bit equivalent   = 1 0 1 1 0 1 0 0 ) 
+
+
+		char ( 8 bits = 1 for sign and 7 for storage)
+	       	
+		8  	7 	 6	  5 	 4 	 3 	 2 	 1 
+	        1       0        1        1      0       1       0       0 
+
+			Decimal equivalent is 180
+
+******************************************************************************************************************************* 
+                      
+		
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*******************************************************************************************************
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	 
+
+
+ 
