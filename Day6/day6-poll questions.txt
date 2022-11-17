@@ -1,0 +1,84 @@
+Day6 poll questions
+
+	
+
+Choose a correct statement about C Escape Sequences.
+A) \n produces new line.
+B) \t produces one tab space (white spaces)
+C) \b produces one Backspace
+D) All the above
+
+Answer :D
+
+Choose a correct statement about C Escape Sequences.
+
+A) \' outputs one Single Quote. 
+B) \" outputs one Double Quote.
+C) \\ produces one Visible Back Slash \.
+D) All the above
+
+Answer : D
+
+
+
+
+
+
+int main()
+{
+    int i = -5;
+    int k = i % 4; Module sing always take numerator sing  i.e this case take "-" sing
+    printf("%d\n", k);
+}
+
+A. Compile time error
+B. -1
+C. 1
+D. None
+
+Answer : B
+
+
+
+int main()
+{
+    int i = 7;
+    i = i / 4;
+    printf("%d\n", i);
+    return 0;
+}
+A. Run time error
+B. 1.6
+C. 1
+D. Compile time error
+
+
+Answer : C
+
+
+
+which is correct with respect to data type?
+A. char > int > float 
+B. int > char > float
+C. char < int < double
+D. double > char > int
+Answer : C
+
+
+what will be the output?
+int main(void)
+{
+	signed char chr;
+	chr=128; 
+	printf("%d",chr);
+	return 0;
+}
+  
+A.0
+B.Depends on compiler
+C.-128
+D.128
+
+Answer :C
+
+

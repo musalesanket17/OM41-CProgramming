@@ -1,0 +1,50 @@
+
+	  10 + 2 * 4 / 2 + 3 --> expression 
+	  10 +  8 / 2 + 3
+	  10 +  4 + 3 
+	  17
+
+		// If operators have same precedence/priority check the assoiciativty 
+	
+		// 10,2,2 --> operands 
+
+	  10 + 2 ==2  // Expression 
+	  12 == 2 	
+		// + 
+		// == 
+
+
+
+	  10 + (2 ==2) 
+		// + 
+		// () 
+		// == 	
+
+
+
+	  printf("%d\n",10 + 4<<2);
+		// ( 10 + 4) << 2 
+		
+
+	// + 
+	// << 
+		   a * b  
+
+					4<<2  
+		     ++a 
+
+		int a,b,c; 
+
+
+		printf("Enter the values of a ,b,c ") ;
+		scanf("%d%d%d",&a,&b,&c); 
+
+		// 1 2 3 
+	
+
+
+
+
+
+
+				 
