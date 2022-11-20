@@ -1,0 +1,108 @@
+1.#include <stdio.h>
+int main(void)
+{
+	printf("%d %d %d %d",4<<2,4>>3,10>>3,10<<2);
+	return 0;
+}
+
+A. 16 0  1 40
+B. 8  12 3 30 
+C. 16 1  1  10
+D. 16 0  10 30
+
+Answer: A
+
+2.#include<stdio.h>
+int main(void)
+{
+    int one, two = 1, three;
+
+    if(three = (two == 0)); one = 2; two = 1;
+    printf("%d %d %d\n", three, two, one);
+    
+    return 0;
+}
+A. 0 1 1
+B. 0 1 garbage value
+C. 1 1 2
+D. 0 1 2
+
+Answer: D
+
+3.#include <stdio.h>
+int main(void)
+{
+    char var=1;
+    
+    if(--var==0)
+        printf("PG-DITISS");
+    else
+        printf("PG-DBDA");
+    return 0;
+}
+
+A. PG-DITISS
+B. PG-DBDA
+C. PG-DBDA PG-DITISS
+D. PG-DITISS PG-DBDA
+
+Answer: A
+
+4.#include <stdio.h>
+int main(void)
+{
+    int x = 3, y = z = 4;
+    printf("%d\n", z >= y >= x ? 1 : 0);
+    return 0;
+}
+
+A. 0
+B. 1
+C. Compile time error
+D. Runtime error
+
+Answer: C
+
+5.#include <stdio.h>
+int main()
+{
+    int a = 10, b = 5, c = 5, d;
+    d = ~!b + b == c;
+    printf("%d", !d);
+    return 0;
+}
+
+A. 1
+B. 0
+C. 10
+D. Syntax error
+
+Answer: A
+
+*********************************
+#include <stdio.h>
+int main()
+{
+    int a = 10, b = 5, c = 5, d;
+    d = ~!b + b == c;
+    //  -1  + 5 == 5 
+    //    4 == 5 
+    //      0   
+    printf("%d", !d); // !d --> !0 --> 1 
+    return 0;
+}
+
+*******************************
+#include <stdio.h>
+int main(void)
+{
+int a,b,c;
+a=printf("\nPG-DITISS");
+//  a = 10 
+b=printf("\nPG-DMC");
+// b = 7 
+c=printf("\nPG-DBDA [%d]",a )+ ++b;
+//           13              +  8 
+printf(" %d",c); // 21 
+return 0;
+}
