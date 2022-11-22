@@ -1,0 +1,117 @@
+1.#include <stdio.h>
+int main(void)
+{
+	int i=1,j=2;
+	switch(i)
+	{
+		default: printf("Sunbeam Pune IT Park");break;
+		case 1+1-1: printf("Sunbeam Karad ");
+		case 'j': printf("Sunbeam Pune Market yard"); break;
+	}
+	return 0;
+}
+
+A. Sunbeam Pune IT Park
+B. Sunbeam Karad
+C. Sunbeam Karad Sunbeam Pune Market yard
+D. Compiler time error
+E. Run time error
+Answer : C
+
+2.
+#include <stdio.h>
+int main()
+{
+    int loop=3;
+    while(printf("Sunbeam ") && loop--);
+    return 0;
+}
+
+A. Sunbeam Sunbeam Sunbeam
+B. Sunbeam Sunbeam
+C. Sunbeam Sunbeam Sunbeam Sunbeam
+D. no output
+
+Answer : C
+
+******************************************
+/*
+  while(printf("Sunbeam ") && loop--);-->while(8 && 3--);-->while(1)
+  //      it prints Sunbeam 
+  while(printf("Sunbeam ") && loop--);-->while(8 && 2--);-->while(1)
+  //      it prints Sunbeam 
+  while(printf("Sunbeam ") && loop--);-->while(8 && 1--);-->while(1)
+  //      it prints Sunbeam 
+  while(printf("Sunbeam ") && loop--);-->while(8 && 0--);-->while(0)
+  //      it prints Sunbeam      
+*/
+
+
+******************************************
+
+
+3.
+#include<stdio.h>
+int main()
+{
+    int val=0;
+    for(;;)
+    {  
+        if(val==10)
+            break;
+        printf("%d ",val++);
+    }
+    return 0;
+}
+
+A. 11
+B. Compile time error
+C. 0 1 2 3 4 5 6 7 8 9
+D. 1 2 3 4 5 6 7 8 9 10
+
+Answer: C
+
+
+4.
+#include <stdio.h>
+int main(void)
+{
+    int a=33;
+    do
+    {
+        printf("%d ", a++);
+        a-=3;
+    }while(!!!(a <= 30+1));
+    
+    return 0;
+}
+
+A.	34
+B.	33
+C.	33 infinte loop
+D.	34 infinte loop
+
+Answer: B
+******************************************************************
+#include <stdio.h>
+int main(void)
+{
+    int a=33;
+    do
+    {
+        printf("%d ", a++); // prints 33 and increments to 34 
+        a-=3; // a = a - 3 --> 34 - 3 --> a = 31 
+    }while(!!!(a <= 30+1)); // a<=30+1 --> 31<=31 --> T
+    // !!!T -->!! !T --> ! !F --> !T --> F --> 0 
+    // while( 0 ) --> false comes outside the loop 
+    
+    return 0;
+}
+
+
+
+
+*****************************************************************
+
+
+
