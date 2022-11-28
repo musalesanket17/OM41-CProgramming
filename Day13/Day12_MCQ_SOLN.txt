@@ -1,0 +1,126 @@
+#include<stdio.h>
+int fun(int x,int y)
+{
+if(x==0)
+return y;
+return fun(x-2,y+x);
+}
+int main(void)
+{
+int x=fun(4,4);
+printf("X is %d",x);
+return 0;
+}
+
+******************************************
+	    4     4  	
+int fun(int x,int y)
+{
+if(x==0)
+  return y;
+return fun(x-2,y+x); //10 is returned 
+//     fun(2,8)  	
+}
+
+	    2     8  	
+int fun(int x,int y)
+{
+if(x==0)
+  return y;
+return fun(x-2,y+x); //10 
+//     fun(0,10)  	
+}
+
+
+
+	    0     10  	
+int fun(int x,int y)
+{
+if(x==0)
+  return y; // return 10 
+return fun(x-2,y+x); 
+//     fun(0,10)  	
+}
+
+************************************************************************************
+
+2.#include<stdio.h>
+int num=100;
+int main(void)
+{
+static int num=8;
+printf("%d",num-=2);
+if(num!=0)
+main();
+return 0;
+}
+
+
+int main(void)
+{
+static int num=8;
+printf("%d",num-=2); // 6 
+if(num!=0) 
+main();
+return 0;
+}
+
+int main(void)
+{
+static int num=8;
+printf("%d",num-=2); // 4 
+if(num!=0) 
+main();
+return 0;
+}
+
+
+int main(void)
+{
+static int num=8;
+printf("%d",num-=2); // 2
+if(num!=0) 
+main();
+return 0;
+}
+
+
+int main(void)
+{
+static int num=8;
+printf("%d",num-=2); // 0
+if(num!=0) 
+main();
+return 0;
+}
+
+
+********************************************************************************
+
+#include <stdio.h>
+int fun(float a)
+{
+if(a==a)
+return a!=a ? 12.00 : 10.00;
+else
+return fun(a-1);
+}
+int main( void )
+{
+float x=fun(10.00f);
+printf("x=%d",(int)x);
+return 0;
+}
+
+
+         10.00 
+int fun(float a)
+{
+if(a==a)
+return a!=a ? 12.00 : 10.00;
+else
+return fun(a-1);
+}
+
+
+
