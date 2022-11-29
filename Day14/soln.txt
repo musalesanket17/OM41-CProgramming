@@ -1,0 +1,33 @@
+/*
+#include<stdio.h>
+int main( )
+{
+    int var = 2561; 
+    //char *cptr = &var;  
+    
+    // 2561 ====>  1010 0000 0001
+    //printf("%d",*cptr); 
+    //short *cptr = &var;  
+    //printf("%hd",*cptr);  
+
+}
+*/
+#include<stdio.h>
+signed char* convert(unsigned int *data)
+{
+    // 10 0100 0001
+return ((signed char*)(data));
+   //  0100 0001 ==> 65 
+}
+int main( void )
+{
+unsigned int a = 577;
+// 10 0100 0001  ==> binary of 577 
+
+signed char *data=NULL;
+
+data =convert(&a);
+
+printf(" %d ",*data);
+return 0;
+}

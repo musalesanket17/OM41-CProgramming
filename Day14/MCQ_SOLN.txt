@@ -1,0 +1,57 @@
+#include <stdio.h>
+int main(void)
+{
+    void *ptr = NULL;
+    char ch = 104;
+    int no = 105;
+    float f = 3.412;
+    int sum = 0;
+
+    ptr = &ch;
+    //printf("%c", *(char*)ptr); //prints h
+
+    sum += *(char *)ptr; // sum = sum + *(char*)ptr ==> 0 + 104 ==> 104
+    //printf("%d",sum); // 104
+
+    ptr = &no; // no ==> 105
+    printf("%c", *(int*)ptr);//prints i ( 105 ascii value )
+
+    sum += *(char *)ptr; //  sum = sum + *(char*)ptr ==> 104 + 105 ==> 209
+    //printf("%d",sum); // 209
+
+    ptr = &f; // 3.412
+
+    printf("-%.f", ++*(float *)ptr); // 3.412 + 1 ==> 4.412 ==>but print it as  4
+
+    sum += *(float *)ptr; // //  sum = sum + *(float*)ptr ==> 209 + 4.412 =>213.42 ==> 213
+
+    printf("\tsum=%d", sum); // 213
+
+    return 0;
+}
+
+************************************************************************
+
+#include <stdio.h>
+int no=2000;
+int* fun1(int *value)
+{
+
+no +=(*value / *value) + (*value / *value) + *value + 2*(no / *value);
+/*
+    no = no + (*value / *value) + (*value / *value) + *value + 2*(no / *value);
+       = 2000 + ( 20 / 20) + (20 / 20 ) + 20 + 2 * ( 2000 / 20 ); 
+       = 2000 + ( 1 ) + ( 1 ) + 20 + 2 * 100 
+       = 2000 + 1 + 1 + 20 + 200 
+       = 2222  
+       
+*/
+return &no;
+}
+int main( void )
+{
+int num1=20;
+int *val=fun1(&num1); 
+printf(" value= %d", *val); //2222 
+return 0;
+}
