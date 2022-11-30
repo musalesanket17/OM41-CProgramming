@@ -1,0 +1,63 @@
+Q.1
+Which is the correct way to assign value to string at the time of declaration ?
+I.   char str1[]="DAC"; // valid --> size 4 bytes (3 + 1)
+II.  char str2[10]="DMC"; // valid --> 3 chars + rest all chars '\0' --> 10 bytes
+III. char str3[10]= {'D','B','D','A'}; // valid --> 4 chars + rest all chars '\0' --> 10 bytes
+IV.  char str4[]= {'D','B','D','A','\0'}; // valid --> 5 chars (last '\0')
+
+A. only I, II and III
+B. only I, II and IV
+C. only I, II , III , IV, 
+D. only I, II 
+Answer: C
+
+Q.2
+void main() {
+	char str1[]={'D','A','C','\0', 'e','D','A','C','\0'};
+	char str2[]="eDACDac\0"; // when "" compiler add '\0' char extra 
+	printf("\nsizeof(%s)=%d ",str1,sizeof(str1)); // DAC, 9 (print till \0 & size of all chars)
+	printf("\nsizeof(%s)=%d ",str2,sizeof(str2)); // eDACDac, 9 (8 + \0)
+	printf("\nstrlen(%s)=%d ",str1,strlen(str1)); // DAC, 3 (strlen count upto \0 char - excluding \0)
+}
+
+A. sizeof(DAC)=9 sizeof(eDACDac)=9 strlen(DAC)=3
+B. sizeof(DAC)=9 sizeof(eDACDac)=9 strlen(DAC)=9  
+C. sizeof(DAC)=3 sizeof(eDACDac)=8 strlen(DAC)=3  
+D. sizeof(DAC)=3 sizeof(eDACDac)=9 strlen(DAC)=3  
+Answer: A
+
+
+
+Q.3
+#include <stdio.h>
+int main(void)
+{
+	char s[]="SunbeamPune";
+	printf("%c ", *(&s[2]));
+	printf("%s ",s+5);  
+	printf("%s ",s);
+	printf("%c " ,*(s+2));
+	return 0;
+}
+
+A) n amPune SunbeamPune n
+B) nbeamPune amPune n
+C) n a sunbeam Pune n
+D) n a Sunbeam pune n
+Answer: A
+
+Q.4
+What is the output of C Program?
+int main() 
+{
+	char grade[4] = {'A','B','C'}; 
+	printf("GRADE=%c, ", *grade); // value at base address = 0th char = A
+	printf("GRADE=%d", grade); // grade is base address == printing address 
+	return 0;
+}
+
+A) GRADE=some address of array, GRADE=A
+B) GRADE=A, GRADE=some address of array
+C) GRADE=A, GRADE=A
+D) Compiler error
+Answer :B
