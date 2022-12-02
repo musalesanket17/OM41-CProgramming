@@ -37,7 +37,8 @@ int main()
     // printf("%d ",arr[1][1]); // 5
     // printf("%d ",arr[2][2]); // 9
 
-    int row, col;
+    int row;
+    int col;
 
     for (row = 0; row < 3; row++)
     {
