@@ -15,7 +15,7 @@ int main()
     int i; 
     for( i = 0 ; i< 3 ; i++)
         //printf("%u ",pa[i]);   
-      printf("%u ",*pa[i]);     
+      printf("%u ",pa[i]);     
     
     return 0;
 }
