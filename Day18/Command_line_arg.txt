@@ -1,0 +1,86 @@
+#include<stdio.h>
+int main(int argc, char *argv[],char *envp[])
+{
+ 
+        argc--; 
+
+	while(argc)
+	{
+		printf("%c ", argv[argc--][4]);
+        
+    }
+	return 0;
+}
+/*
+
+    //.\a.exe PG-DMC PG-DAC
+	//argument count is => 3
+    argc--; //3--
+
+	while(argc)// while(2) =>argc is 2 
+	{
+		printf("%c ", argv[argc--][4]);
+        //            argv[2--][4];  // next iteration 2 becomes 1 
+        //            Prints A             
+    }
+
+    while(argc)// while(1) =>argc is 1 
+	{
+		printf("%c ", argv[argc--][4]);
+        //            argv[1--][4];  // next iteration 1 becomes 0 (False) 
+        //            Prints M             
+    }
+
+     while(argc)// while(0) =>argc is 0 
+	{
+        //SKIPS
+		printf("%c ", argv[argc--][4]);
+        
+    } 
+	
+	
+
+	
+*/
+*****************************************
+#include<stdio.h>
+int main(int argc, char *argv[],char *envp[])
+{
+while(argc)
+{
+printf("%s ", argv[--argc]);
+}
+return 0;
+}
+/*
+// .\a.exe one two 
+
+argc=> 3 
+while(argc) // while(3)
+{
+printf("%s ", argv[--argc]); => argv[--3]=>argv[2]
+//            argv[2]=>two 
+}
+
+while(argc) // while(2)
+{
+printf("%s ", argv[--argc]); => argv[--2]=>argv[1]
+//            argv[1]=> one   
+}
+
+while(argc) // while(1)
+{
+printf("%s ", argv[--argc]); => argv[--1]=>argv[0]
+//            argv[0]=>.\a.exe    
+}
+
+while(argc) // while(0) // False 
+{
+printf("%s ", argv[--argc]); 
+}
+
+
+
+
+}
+*/

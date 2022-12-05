@@ -1,0 +1,117 @@
+1.#define COL 3
+#define ROW 3
+int main(void) {
+  int arr[ROW][] = {{1,2,3},{1,2},{1}},i,j;
+  for(i=0; i<3; i++)
+  for(j=0; j<3; j++)
+  printf("%d",arr[i][j]);
+  return 0;
+}
+A) Compile time error
+B) Run time error
+C) Prints array elements
+D) None of the above
+
+
+Q.2
+int main(void) {
+  int a[3][3] = {{1,2,3},{4,5,6},{7,8,9}};
+  int *ptr_a = &a[1][0];
+  int **ptr_ptr = &ptr_a;
+  printf("%d %d %d\n", **ptr_ptr,*ptr_a, **a);
+  return 0;
+}
+A. 1 1 1 
+B. 4 4 4
+C. 4 4 1
+D. 1 4 1 
+Answer: C
+
+Q.3
+int main(void) {
+  char arr[4][8] = {"PG-DAC","PG-DESD","PG-DBDA"};
+  printf("%c%s",**arr,*(arr+1)+1);
+  return 0;
+}
+A) PPG-DAC
+B) PPG-DESD
+C) PPG-DBDA
+D) PG-DESD
+Answer: D
+'P' --> %c -- **arr
+"G-DESD" --> %s -- *(arr+1)+1
+Q.4int main(void) {
+  char arr[4][10]={"Sunbeam","Karad","Pune","Hinjewadi"};
+  char *ptr = (char*)arr[3]; 
+  *ptr++;
+  printf("%s %s\n",arr[ptr - arr[3]],--ptr);
+  return 0;
+}
+A. Sunbeam Hinjewadi
+B. Sunbeam Pune
+C. Compiler error
+D. None of the above
+Answer: A
+
+--ptr --> "Hinjewadi"
+ptr -> &arr[3]
+ptr - arr[3] = 0
+arr[0] = "Sunbeam"
+
+Q5.If following program having name cmdline is run from the command line as 
+"./cmdline.out PG-DMC PG-DAC PG-DESD PG-DBDA PG-DITISS"  
+then what would be the output?
+
+#include<stdio.h>
+int main(int argc, char *argv[],char *envp[])
+{
+	argc--;
+	while(argc)
+	{
+		printf("%c ", argv[argc--][4]);
+	}
+	return 0;
+}
+
+A. M A E B I
+B. I B E A M 
+C. D D D D D
+D. Compile time error
+
+Answer : B
+
+6.#include<stdio.h>
+int main(void)
+{
+    int a[][4] = {{1, 2},{4, 3, 2},{1, 3, 5, 6},{7}};
+    
+    printf("%d",sizeof(a)/sizeof(a[1][2]));
+    
+    return 0;
+}
+
+A. 64
+B. 16
+C. 10
+D. Complile time error
+
+Answer: B
+
+
+7.If following program having name cmdline is run from the command line as
+"cmdline" then what would be the output?
+
+#include<stdio.h>
+int main(int argc, char *argv[], char *envp[])
+{
+    int i;
+    for(i=1; envp[i]!=NULL; i++)
+        printf("\n%s", envp[i]);
+    return 0;
+}
+
+A. List of all environment variables
+B. List of all command-line arguments
+C. count of command-line arguments
+D. Error: cannot have more than two arguments in main()
+Answer: A
