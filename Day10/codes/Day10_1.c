@@ -1,5 +1,5 @@
 #include<stdio.h>
-
+//In int and void if you dont give declration it will also work !!
 int addition(int x , int y );// function declaration  
 //main => OS 
 int main( ) // user defined functions 
