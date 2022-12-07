@@ -13,6 +13,7 @@ int main()
     // rest ele are init to 0 
 
     char str4[] = {'S','u','n','b','e','a','m'}; 
+    char str10[] ="sanket" // Modified Acceptable
     // char array 
 
     
