@@ -28,8 +28,8 @@ int main()
     // for( i = 0 ; str2[i]!='\0' ; i++)
     //       putchar(str2[i]);   
 
-    // for( i = 0 ; i < 5 ; i++)
-    //       putchar(str1[i]);   
+    for( i = 0 ; i < 5 ; i++)
+          putchar(str1[i]);   
 
     return 0;
 }
