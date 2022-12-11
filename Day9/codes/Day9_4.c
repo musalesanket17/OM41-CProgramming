@@ -8,7 +8,9 @@ int main( )
     }; 
     int num1,num2,result,op,ans; 
     
-    
+    enum number{
+        one =1 , two ,three ,four
+    };
     enum operations choice;  
 
     do
