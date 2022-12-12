@@ -11,6 +11,9 @@ int main( )
     
     // loops => while , for , do-while 
 
+    //While Loop , For Loop => Entry Control Loop
+    //do-while  => Exit Control Loop
+
     // // while 
     // int i; 
     // i = 1;
