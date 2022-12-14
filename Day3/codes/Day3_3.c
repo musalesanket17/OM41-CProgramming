@@ -8,8 +8,9 @@ int main( )
      printf("%d\n",num); // 12  
      num = 13; 
      num = 14; 
-     num = -1;    
-     printf("%d\n",num); // -1   
+     num = -1;
+     num =2.2;    
+     printf("%d\n",num); // 2  
     return 0; 
 }
 /*
