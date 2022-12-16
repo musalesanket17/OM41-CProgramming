@@ -9,6 +9,7 @@
 int main( )
 {
     int count; 
+    int result;//Modified
     //1.Input 
     printf("Enter the count");
     scanf("%d",&count); //1000  
