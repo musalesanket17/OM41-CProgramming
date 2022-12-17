@@ -1,0 +1,253 @@
+
+				
+				 
+
+
+
+	
+
+
+				char ch;
+
+				char -> 1 byte 
+
+				8 bits 
+				1 + 7 bits 
+				sign
+				( 2 raise to 7 - 1 )
+				( 128 - 1 ) --> 127 to -128
+
+			
+				short int num; // by default signed 
+
+				size = 2 bytes --> 16 bits --> 1 bit for sign and 15 bit for storage			
+				
+				max range --> 2 raise to 15 - 1 --> 32768 - 1 --> 32767 to -32768
+		
+
+				int num = 1 ; // 32 bits 
+				binary of 1 is --> 0001  
+
+				binary of 1 is stored in 32 bits 
+
+				1 bit is for signed 
+				31 bit is stored  
+				
+				representation will be 
+
+				bit32 	bit31			bit4 bit3 bit2 bit1 	
+				 0 				  0    0   0 	1 
+		
+	
+	********************************************************************************************************************
+
+
+				int b:3 // by default signed // 1 bit for signed and 2 bits for storage 
+				1 + 2 bits 
+
+				// 2 raise to 2 - 1 
+				//  4 - 1 
+				// 3 --> max range 
+				range will be 3 to -4 
+	
+					-4 -3 -2 -1 0 1 2 3 
+				
+			 
+				we are storing  5 
+
+				4 --> -4
+				5 --> -3
+
+
+				
+
+
+		******************************************************
+
+		1.	int b:3;
+			b1.a=4; // 4
+
+			b is allocated only 3 bits ( 1 bit sign and 2 bits for storage )
+
+			b1.a=4; // we are trying to store the 4 inside 3 bits 
+	
+			// binary of 4 is --> 0100 //            4   2  1 	
+					
+			bit3 bit2 bit1 	 			
+			 1    0     0  // msb is 1 so calculate the 2s compliment
+
+			1  0  0
+				
+ 		1s compliment --> 0 1 1 		
+		2s compliment     0 1 1
+				      1
+				--------
+				  1 0 0 // decimal equivalent is 4 ans is -4
+
+
+
+	    2.  	int b:3;
+			b1.b=10; // 4
+
+			b1.b = 10// we are trying to store 10  inside 3 bits 
+
+			// binary of 10 is --> 1010--> first 3 bits are copied from the left side because only 3 bits are 				allocated 
+
+			Bit3 Bit2 Bit1 
+			 0    1     0
+			(msb)
+			msb is 0 so number is positive so no need to calculate 2s compliment directly calculate the decimal 
+
+			010 --> decimal --> 2 so ans is 2  
+			 
+  		 
+
+**************************************************************************************************************************
+
+		1. unsigned int a:3;
+		unsigned int a 3 means all 3 bits will be allocated for the storage no msb bit as a is unsigned
+
+		max range --> 2 raise to 3 - 1 --> 7 
+		min range --> 0
+		range --> 0 to 7  ( which means values from 0 to 7 can be stored inside unsigned int a:3) 
+
+		for example -->b1.a=7 --> printf("%d",b1.a); // o/p will be 7 
+			       b1.a=8 -->printf("%d",b1.a); // o/p will be 0 ( moves in cycle of min and max range );    	
+	
+
+		b1.a=65;
+
+		binary of 65 --> 1000001 
+
+		unsigned int a:3 
+
+		1000001 --> last 3 bits are taken for the storage 
+
+		Bit3 Bit2 Bit1
+		0     0     1 
+
+		Decimal is 1 // so o/p will be 1 	 
+ 
+
+********************************************************************************************************************************
+
+
+		
+struct bit
+{
+    unsigned int a:3;
+    int b:3;
+};
+int main()
+{
+    struct bit b1;
+    b1.b=10; 
+    b1.a=65;
+    printf("%d\n",b1.a);
+    printf("%d",b1.b);
+}
+
+
+
+
+ octal and hexa number from decimal number 
+
+
+
+
+
+
+
+
+
+	4 binary -> 0 1 0 0 
+	5 binary -> 0 1 0 1 
+	 
+
+	unsigned int a:3 
+
+	bit3 bit2 bit1 
+	 1    0    0 
+
+	   	
+	int b : 3 
+
+	(sign)
+	bit3 	bit2 	bit1    
+	 1	 0       1
+
+
+  	1 0 1
+
+	2s compliment 
+
+	0 1 0 ( 1 s )
+	    1
+	-----
+	0 1 1 ( 2s compliment )  		
+	 
+	2 + 1 = -3 	
+
+
+
+
+
+	 
+
+
+
+
+
+
+
+
+
+
+
+
+********************************************************************************************************************************
+
+
+
+
+union test
+{
+unsigned int x: 3;
+unsigned int y: 3;
+int z;
+};
+int main(void)
+{
+union test t;
+t.x = 5;
+t.y = 4;
+t.z = 10;
+printf("%4d %4d %4d\n", t.x, t.y, t.z);
+return 0;
+}
+
+/*
+ *          8 4 2 1 // 3 -->
+ *          32 bit
+ *
+ *  // In union largest datatype is int so 32 bit is allocated and shared among all
+ *  // unsigned int x:3 --> first 3 bit are used for storage( same rule for others) 
+ *  // t.x =5 // it means binary of 5 is stored in first 3 bits ( from right side )
+ *  // t.y =4 // it means binary if 4 is stored in first 3 bits (stored from right side as unsigned int y:3 )
+ *
+ *  // int z // means 32 bit is allocated
+ *  // t.z = 10 // means evantually as memory is shared binary  of 10 is stored in all 32 bits (overwrite)
+ *  // now print t.x --> read first 3 bits ( decimal value of first 3 bits from right side is 2 )
+ *  // now print t.y --> read first 3 bits ( decimal value of first 3 bits from right side is 2 )
+ *  // now print t.z --> read all 32 bits ( decimal equivalent of all 32 bits is 10 so answer is 10)
+ *  // so it prints  2 2 10 
+ *
+ *  0000    0000     0000    0000       0000        0000        0 0 0 0         0 0 0 0
+ *                                                                              1 0 1 0
+ *  <------                   as union so 32 bit is shared  ------------------------->                                                
+ *
+ *  t.x --> read first 3 bits --> decimal is 2
+ *  t.y --> read first 3 bits --> decimal is 2
+ *  t.z --> read 32 bits      --> decimal is 10
+ */
+
