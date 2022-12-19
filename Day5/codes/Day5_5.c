@@ -20,7 +20,8 @@ int main( )
 
     //Output 
     printf("peri = %.2lf",peri); 
-
+     // REsult give in Double 
+     // size of double 8
 
     return 0; 
 }
