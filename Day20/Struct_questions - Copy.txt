@@ -1,0 +1,95 @@
+Q.1
+int main() {
+    struct book
+    {
+        int pages;
+        char name[10];
+    } a; // a is variable of struct
+    a.pages=10;
+    strcpy(a.name, "Cbasics"); // name cannot be assigned directly. use strcpy.
+    printf("%s=%d", a.name,a.pages);
+    return 0;
+}
+A) empty string=10
+B) C=basics
+C) Cbasics=10
+D) Compiler error
+Answer: C
+
+Q.2
+int main() {
+    struct ship {
+        int size;
+        char color[10];
+    } boat1, boat2; // boat1, boat2 are two variables of struct ship
+    boat1.size=10; // 
+    boat2 = boat1; // boat1 is copied to boat2 so boat2.size <-- boat1.size = 10
+    printf("boat2=%d",boat2.size); // 10
+    return 0;
+}
+A) boat2=0
+B) boat2=-1
+C) boat2=10
+D) Compiler error
+Answer : C
+
+Q.3
+#include<stdio.h>
+struct time {
+    int ss:7;
+    int mm:7;
+    int hh:4;
+};
+int main(void) {
+    struct time t1;
+    printf("%d %d", sizeof(t1), sizeof(t1.ss));
+        // sizeof( bit-field ) is not allowed.
+    return 0;
+}
+A) 4
+B) Compiler error
+C) Runtime error
+D) None of the above
+Answer: B
+
+Q.4
+int main() {
+    struct world {
+        int a;          
+        char b;
+        struct india { 
+            char c; 
+            float d; 
+        } p;
+    }; 
+    //struct world st ={1, 'A', 'i', 1.8};  
+    struct world st ={1,'A', {'i', 1.8 } };  
+    printf("%d\t%c\t%c\t%f",st.a,st.b,st.p.c,st.p.d);
+    return 0;
+}
+A) 1 A i 1.800000
+B) compile time error
+C) 1 a I 1.8
+D) a 1 I 1.800000
+Answer: A
+
+Q.5
+int main() {
+    struct india { 
+        char c; 
+        float d;  
+    };
+    struct world {   
+        int a[3];
+        char b; 
+        struct india in;
+    };
+    struct world st ={{1,2,3},'P','q',1.4}; 
+    printf("%d\t%c\t%c\t%f",st.a[1],st.b,st.in.c,st.in.d);
+    return 0;
+}
+A) 2 P q 1.400000
+B) 1 p q 1.4
+C) we can not assign array elements inside structure
+D) Compile Time Error
+Answer : A

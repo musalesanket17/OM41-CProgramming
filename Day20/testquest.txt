@@ -1,0 +1,780 @@
+1.#include<stdio.h>  
+int main (void)
+{
+int *ptr;
+int arr[100], i=0;
+char str[40]="sunbeam pune & sunbeam Hinjewadi";
+ptr=arr;
+//ptr is storing arr i.e base address 
+
+
+if( (arr[0+i]==i[0+i+arr] && arr[0+i]==*(ptr+i) ) && (ptr==arr) )
+printf("\n %s \n", (str+13));
+else
+printf("\n %s \n", (str+0));
+return 0;
+
+/*
+    i = 0 
+    if( (arr[0+i]==i[0+i+arr] && arr[0+i]==*(ptr+i) )&& (ptr==arr))
+                same as 
+    if( (arr[0+0]==i[0+0+arr] && arr[0+0]==*(ptr+0) )&& (ptr==arr))
+                same as 
+    if( (arr[0]==i[0+arr] && arr[0]==*(ptr+0))&& (ptr==arr))
+                same as 
+    if( (arr[0]==i[arr] && arr[0]==*(ptr+0))&& (ptr==arr))
+                same as 
+    if( (arr[0]==arr[i] && arr[0]==*(ptr+0))&& (ptr==arr))
+          here i = 0 
+
+    if( (arr[0]==arr[0] && arr[0]==*(ptr+0) )&& (ptr==arr)) 
+            // same     && arr[0]==ptr[0] 
+            // True     &&     True 
+                    True                    &&  ( ptr == arr) // this is also true as arr = ptr
+            //       True                   &&      True
+            //                  True 
+
+         // so if becomes true 
+            if( (arr[0+i]==i[0+i+arr] && arr[0+i]==*(ptr+i) ) && (ptr==arr) )
+                        printf("\n %s \n", (str+13));
+
+            sunbeam pune & sunbeam Hinjewadi";
+            str + 13 ==> str is name of array represents the base address 
+            base address + 13 ==> consider base address as 100
+            100 + 13 
+            100 + 13 * 1  ==> scale factor concept 
+            113  
+            prints & sunbeam Hinjewadi";
+                                                      
+
+
+
+
+
+    *(ptr + 0) ==> ptr[0] // pointer notation 
+    arr[0]==ptr[0]
+        is same as ptr = arr 
+   copying the base address inside ptr      
+     
+
+*/
+
+
+}
+
+
+******************************************************
+2.#include<stdio.h>
+int main ()          // assume x address is 2000 and ptr address is 2004
+{
+int x=0;
+int *ptr=&x;
+*ptr+=5;// ptr is updated to 5 ( value  at operator )
+printf("\n x =%d" , x); // 5 
+printf("\ptr =%d" , *ptr);// 5 ==> ptr is updated to 5 
+(*ptr)++;// *ptr i.e 5 is incremented to 6 
+printf("\n x = %d " , x);// 6 
+printf("*ptr = %d" , *ptr++);// 6 and ptr is incremented by 4 bytes 
+printf("\n difference=%d", ptr-&x);//1  
+// ptr - &x 
+// (ptr1 - ptr2 ) / scale factor of ptr1 
+// 2004 - 2000 / 4  = > 1   
+
+return 0;
+}
+
+
+**********************************************************
+
+3.#include<stdio.h>
+int main ()
+{
+void *p;
+char name[]="ABCDE";
+p=name; // p is pointing to character array "ABCDE"
+printf("\n name =%s " , p);// ABCDE 
+++(*(char*)p);//char* scale factor is 1  byte so A is fetched and incremented i.e A ==> B 
+// ABCDE ==> BBCDE
+printf("\n name=%s" , p); 
+
+
+return 0;
+}
+
+************************************************************
+
+4. #include<stdio.h>
+int main (void)
+{
+char num=256;
+int *ptr = &num;
+
+/*
+        256 binary 
+        1 0000 0000
+
+*/
+
+*ptr++;//*ptr will not matter here as no printf and next ptr++ will take pointer 
+// to next 4 bytes as scale factor of pointer is 4 bytes 
+int *ptr2=--ptr;
+//*ptr2 = ptr - 1 
+// again pointer comes back to previous location 
+printf("%d " , *(char *)ptr2);
+// *(char*)ptr2 ==> consider scale factor 1 byte because of(char*)
+// 1 0000 0000 ==> read 1 byte i.e 0000 0000 decimal is 0 so ans is 0  
+//   
+
+
+}
+
+*************************************************************
+
+
+5. #include<stdio.h>
+int main (void)
+{
+int num=10;
+int *ptr=&num;
+++*ptr++;
+//*ptr  ==> 10  is fetched 
+// ++*ptr ==> 10 is incremented to 11 
+//++* ptr++ // ptr is incremented  i.e 4 bytes ahead 
+
+printf("%d" , num);// 11 as we have incremented the value 
+printf("%d" ,  *--ptr);// --ptr will decrement i.e it takes ptr to previous location i.e &num and its value i.e 11 is printed  
+
+}
+
+****************************************************************************
+
+
+6. #include <stdio.h>
+int main(void)
+{
+char arr [4][8]={"DAC", "DMC", "DESD", "DBDA"};
+char *ptr=(char *)arr+1;// (char*) consider the scale factor 1 byte 
+//arr ==> base address 
+// base address ==> DAC ==> arr + 1 ==> AC
+printf("%s %c" , ptr,*(ptr+1));
+//           *(ptr + 1)==> ptr is pointing to A => +1 will point it to C
+//          *(ptr + 1 ) ==> prints C
+
+// ptr ==> arr points to DAC and  arr+1 points it to ==>  AC
+
+}
+
+**************************************************************
+
+
+7.#include<stdio.h>
+int main( void )
+{
+int arr[2][3] = {10,20,30,40};
+
+/*
+   arr 
+              [0]   [1] [2] 
+       [0]     10   20  30
+             100   104 108 
+
+       [1]     40   0   0  
+             112   116 120 
+*/
+
+//contains add=>    108           104              
+int *ptr[] = {(int *)arr+2, (int *)arr+1};
+//                30             20        
+//   address     300             304 
+
+
+//printf("%d",*ptr[0]); // 30 
+//printf("%d",*ptr[1]); // 20 
+
+int **p=ptr;// ptr is pointing to the base address of array of pointer 
+
+//*(*(p + 1) + 0) ==> *(*(300 + 1) + 0)
+//                ==> *(*(304) + 0) 
+//                ==> *(*(304) + 0)
+//                ==> *(104 + 0)  
+//                ==>  20 
+
+// p[0][1] ==> *(*(p + 0 ) + 1 )
+//             *(*(300 + 0) + 1)
+//             *(*(300) + 1)
+//             *(108 + 1)
+//             *(112)
+//                40 
+
+
+
+printf("%d %d", p[0][1], *(*(p + 1) + 0));
+//                 40           20  
+
+
+
+
+return 0;
+}
+
+*****************************************************************************
+
+
+8.#include<stdio.h>
+int main (void)
+{
+int arr[5]={10,1,2,3,4};
+int *p[]={arr,arr+1,arr+2}; // consider array base address has 100 
+//        100, 104,  108     
+// p is array of pointers 
+
+// consider the base address as 100 
+
+//       arr ==>  100  ==> p[0]
+//       arr + 1 ==> 104 ==>p[1]
+//       arr + 2 ==> 108 ==>p[2]   
+
+
+printf("%d\n" , *p[0]);// 10 
+/*
+        *p[0]  ==> pointer notation is 
+         
+         p[0] has address 100 and *p[0] ==> *100 ==> 10 
+        
+
+*/
+printf("%d\n" , *(p+1)[0]); //1 
+/*
+            *(p+1)[0] 
+            *(*(p+1)+0)
+            now *(p+1)  is same as  p[1] has address 104 
+            *(104 +0)
+            *(104)
+            1 
+*/
+
+
+printf("%d\n" , *(p+2)[0]); //2 
+/*
+            *(p+2)[0] 
+            *(*(p+2)+0)
+            now *(p+2)  is same as  p[2] has address 108 
+            *(108 +0)
+            *(108)
+            2 
+*/
+  
+  
+
+return 0;
+}
+
+*********************************************************************
+
+9.#include<stdio.h>
+int main (void)
+{
+int arr[5]={10,1,2,3,4};
+//          100,104,108,112,116
+int *p[]={arr,arr+1,arr+2}; // consider the base address has 100 of array 
+//        100 104    108 
+// consider the array of pointer address  as 400 404 408 
+// &p[0] ==> 400 
+// &p[1] ==> 404
+// &p[2] ==> 408 
+
+int **pptr=&p;
+// pptr is a pointer pointing to array of pointer p 
+pptr++; // pptr++ incrementing a pointer which has address p 
+// p is name of array represents the base address 
+
+// pptr++ will take pointer to pointer to pointer arr+1 i.e 104 i.e 1 
+
+printf("%d %d ", pptr-p, **pptr);
+
+// **pptr ==> valueat(valueat(pptr)) ==> valueat(valueat(404))
+
+// valueat(valueat(404)) ==> valueat(104) ==> 1 
+
+
+// pptr - p 
+// pointer subtraction is allowed 
+// formula is ptr1 - ptr2 / ( scale factor of ptr1 )
+
+// pptr ==> contains the address 404 
+// p contains address ==> base address ==> 400 
+
+// 404 - 400 / 4 
+// 4 / 4 
+// 1 
+
+return 0;
+}
+
+
+***************************************************************************
+
+
+10.#include<stdio.h>
+int main (void)
+{
+int index=0;
+char array[4][8]={"Java", "Angular", "Python", "BigData"};
+//                  [0]     [1]        [2]        [3]
+char *str=NULL;
+str="%-15s";
+for(index=1; index<3; index)
+         printf (str,  array[++index]);
+
+// str ==> "%-15s" ==> for printing the string( -15s => width specifier)
+//array[++index] ==> index = 1 ==> array[++index]==> array[2] ==> python 
+//array[++index] ==> index = 2 ==> array[++index]==> array[3] ==> Bigdata          
+return 0;
+}
+
+
+*********************************************************************
+
+11.#include<stdio.h>
+int main( void )
+{
+int arr[2][3] = {10,20,30,40};
+
+/*
+   arr 
+              [0]   [1] [2] 
+       [0]     10   20  30
+             100   104 108 
+
+       [1]     40   0   0  
+             112   116 120 
+*/
+
+//contains add=>    108           104              
+int *ptr[] = {(int *)arr+2, (int *)arr+1};
+//                30             20        
+//   address     300             304 
+
+
+//printf("%d",*ptr[0]); // 30 
+//printf("%d",*ptr[1]); // 20 
+
+int **p=ptr;// ptr is pointing to the base address of array of pointer 
+
+//*(*(p + 1) + 0) ==> *(*(300 + 1) + 0)
+//                ==> *(*(304) + 0) 
+//                ==> *(*(304) + 0)
+//                ==> *(104 + 0)  
+//                ==>  20 
+
+// p[0][1] ==> *(*(p + 0 ) + 1 )
+//             *(*(300 + 0) + 1)
+//             *(*(300) + 1)
+//             *(108 + 1)
+//             *(112)
+//                40 
+
+
+
+printf("%d %d", p[0][1], *(*(p + 1) + 0));
+//                 40           20  
+
+
+
+
+return 0;
+}
+
+
+
+
+**********************************************************
+12. #include<stdio.h>
+#include<stdlib.h>
+int main()
+{
+char *ptr=NULL;
+int alloc_length =16 ;
+int new_length;
+
+ptr = (char *)malloc(sizeof(char)*alloc_length);
+// ptr is pointing 16 bytes allocated 
+
+ptr = realloc(ptr, alloc_length << 1);
+//  alloc_length << 1 ==> left shift by 1 
+//      16 << 1 
+//    left shift ==> 16 multiply by 2 to the power n 
+//               ==> 16 multiply by 2 to the power 1
+//               ==> 16 multiply by 2 
+//               ==> 32 
+
+// so ptr will point to newly allocated 32 bytes 
+
+free(ptr);// 32 bytes is freed 
+ptr=NULL; // to avoid dangling pointer 
+
+return 0;
+}
+
+***************************************************************************************
+#include<stdio.h>
+#include<string.h>
+#define len(s) strlen(s)
+#define EQUAL(X,Y) len(X)>len(Y)?1:0
+#define DEF(s1,s2) printf("\n%s %s  ",s1,s2);
+
+int main()
+{
+int x;
+char *str1="PRECAT";
+char *str2="EXAM";
+if(EQUAL(str1,str2))
+    x = DEF(str1, str2)
+printf("x = %d \n ",x);
+
+return 0;
+}
+/*
+int main()
+{
+int x;
+char *str1="PRECAT";
+char *str2="EXAM";
+if(strlen(str1)>strlen(str2)?1:0)
+//      6      >  4 
+//          True 
+//   if(1) => condition is true 
+    x = printf("\n%s %s  ",str1,str2);
+
+   printf("\n%s %s  ",str1,str2);
+   //      "\nPRECAT EXAM  "
+   //      returns 14 to x 
+   // printf returns number of characters printed on screen including space   
+
+printf("x = %d \n ",x); // 14 is printed 
+
+return 0;
+}
+
+*/
+
+
+************************************************************************************
+
+
+
+int main()
+{
+   int d;
+   d = printf("Sunbeam") == printf("\rSunBeam") ;
+//	         7       ==     8  ==> false (returns the number of characters) 	
+   printf("%2d",d); // prints 0 as 
+       return 0;
+}
+
+because of \r 
+\r takes control to the beginning of current line and overwrites the previous Sunbeam
+
+*************************************************************************************
+
+
+int main()
+{
+   float farr[] = {1.1,2.2,3.3,4.4,5.5};
+   //             100  104 108 112 116 
+   float *fp = farr+4; // base address + 4 
+   //          100 + 4 
+   //          100 + 4 * 4 ( scale factor )
+   //          100 + 16 
+   //          116       
+   int x ;
+   printf("%.2f",fp[-(x=sizeof(5.5)-6)]);
+   //            fp[-(x = 8 - 6 )]
+   //            fp[-(x = 2 )]
+   //            fp[-[2]]
+   // *(fp - 2 )
+   // *(116 - 2 )
+   // *(116 - 2 * 4 )
+   // *(116 - 8 )
+   // *(108)
+   // 3.3 
+   // output is 3.3  
+        return 0;
+}
+
+***************************************************************************
+#include <stdio.h>
+int main()
+{
+   int a = 10; // consider address of a is 100 
+   int *p = &a;// // consider address of p is 500 
+
+   // address of p is 500 
+   // address of a is 100 
+   // address inside p is 100 ( i.e address of a )
+   // a --> 10 
+   // p --> 100 
+   // &p --> 500  
+   
+   
+   printf("%u ",&a); 
+   printf("%u ",&p);
+   printf("%u ",p); 
+   printf("\n %u", *&*&p);
+   /*
+            *&*&p 
+            
+            divide 
+
+            1.*&p ( right most )
+            valueat(addressof(p))
+            valueat(500) 
+            100
+          now 100 is nothing but p 
+          *&p --> p ( right most evaluates to p )
+
+          2.*&*&p ( left most )    
+             *&p is evluated to  p
+            *&p 
+           valueat(addressof(p))
+           valueat(500)
+           100 
+          100 means it will print p        
+   */
+   
+   
+   
+
+   return 0;
+}
+*******************************************************
+#include <stdio.h>
+int a, b, c = 0;// global variable 
+void prtFun (void);
+int main ()
+{
+    static int a = 1; /* line 1 */ // a will get memory only once 
+    prtFun();// call 1  
+    a += 1; // a = a + 1 // a -> 2  
+    prtFun(); // call 2 
+    printf ( "n %d %d " , a, b) ; // a = 2 b = 0 ( as there is no local variable global variable b is printed as 0 ) 
+
+// a's scope is limited to main function but it is static 
+// a is destroyed after main's FAR is destroyed 
+}
+  
+void prtFun (void)
+{
+    static int a = 2; /* line 2 */ // a's scope is limited ot ptrfun
+    // a is static it will get memory once destroyed at last   
+    int b = 1; // local variable 
+    a += ++b; // a = a + ++b -->   2 + 2 --> 4 ( call 1 ) ( a gets updated to 4 ) 
+    printf (" n %d %d " , a, b); 
+    // in first call a is printed as 4 and b as 2 ( b gets destroyed but a remains)
+
+    // In call 2 
+    // a is used as updated 4 ( as a is static variable )
+    // b is initialized to 1 again as local variable 
+    // a + = ++b // a = a + ++b -> 4 + 2 -> 6 ( call 2) ( a is used as 4 because it is static) 
+    // a is printed as 6 and b is printed as 2 in second call 
+
+}
+// a is destroyed after main ( ) --> static 
+// b which is local to ptrfun is destroyed after execution of ptrfun 
+
+********************************************
+
+#include<stdio.h>
+
+int main()
+{
+   signed int  x = -10;
+   
+   unsigned int y = 10, z;
+
+	// here types are different x is signed and y is unsigned 
+	// so here lower type is promoted to higher type temporarily 
+	// signed is promoted to unsigned 
+	// x is promoted to unsigned , so value of x is used as 4294967286 temporarily 
+	// 4294967286 this value is ( max range of unsigned int - 10 )( -10 because x is -10)
+
+	y = y >> 2; // here is y is assigned to 2 ( right shift operator)
+    z = y > x ? !y : ~x;
+   //  2 > 4294967286 ? !y : ~x 
+
+   // now here 2 > 4294967286 is false so ~x is evaluated 
+   // ~x --> ~-10 --> -(n+1) -> -(-10+1) --> -(-9) --> 9 
+
+   printf("%d", z);
+   return 0;
+
+}
+
+*****************************************************************************
+#include<stdio.h>
+union test
+{
+short int num;
+char ch[2];
+};// size is 2 bytes 
+int main()
+{
+    union test ut;
+    ut.num = 325;
+    // 0001 0100 0101 ( binary of 325 )
+    //   1 byte       1 byte        ( total size 2 bytes )
+    // 0000 0001   0100  0101 
+    //    ch[1]     ch[0]   
+    
+    // read from right side 
+
+    // ch[0] ==> 0100  0101  ==> 69 
+    // ch[1] ==> 0000  0001  ==> 1 
+
+    // (char)ut.num ==> read 1 byte ==>     0100  0101 ==> 69 ==> E 
+    char *ch = ut.ch ;
+    printf("%d \t %c\n", ch[0],(char)ut.num);
+    
+    return 0;
+}
+************************************************
+#include <stdio.h>
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+else 
+   return *a - f(a+1, n-1);
+}
+int main()
+{
+int a[] = {12, 7, 13, 4, 11, 6};
+printf("%d", f(a, 6));
+getchar();
+return 0;
+}
+
+*****************************************
+//       12       6 
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) //  12 % 2 ==> 0 ==> yes 
+   return *a + f(a+1, n-1);// call
+//        12 + f(base add +1 , 5 )  ==> 12 + 3 ==> 15 is returned back to main and 15 is printed 
+//		 next element 		 
+
+else 
+   return *a - f(a+1, n-1);
+}
+
+
+//       7      5
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+
+else 
+   return *a - f(a+1, n-1);
+   //      7 - f(next address(next value) , 4 ) ==> 7 - 4 
+
+}
+
+//       13      4
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+
+else 
+   return *a - f(a+1, n-1);
+   //      13 - f(next address(next value) , 3 ) ==> 13 - 9 
+
+}
+
+
+
+
+//       4      3
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+   //      4 + f(next address(value) , 2 ) ==> 4 + 5 
+	
+
+else 
+   return *a - f(a+1, n-1);
+
+
+}
+
+
+
+//       11      2
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+  
+	
+
+else 
+   return *a - f(a+1, n-1);
+//        11 - f(next address value , 1 ) ==> 11 - 6 
+
+
+}
+
+//       6      1
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+//         6 + f(next address value , 0 )   // 6 + 0 ==> 6 
+	
+
+else 
+   return *a - f(a+1, n-1);
+
+
+}
+
+//       6      0
+int f(int *a, int n)
+{
+if(n <= 0) 
+  return 0;
+
+else if(*a % 2 == 0) 
+   return *a + f(a+1, n-1);
+//         6 + f(next address value , 0 )   
+	
+
+else 
+   return *a - f(a+1, n-1);
+
+
+}
+
+
