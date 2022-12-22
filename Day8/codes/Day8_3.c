@@ -25,6 +25,9 @@ int main()
     case 4:
         printf("April has 30 days");
         break;
+    case 5:
+        printf("May has 30 days");
+        break;
     }
     return 0;
 }
