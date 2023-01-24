@@ -1,13 +1,19 @@
     
     
 #include <stdio.h>
+struct tcs{
+int a  :2 ;
+int b  :3 ;
+int c  :4 ;
+int d  :5 ;
+
+};
+
     int main()
     {
-        signed char c1 = -1;
-        unsigned char c2 = 1;
-        if(c2 > c1)
-            printf("c2 is greater");
-        
+
+        struct tcs a;
+        printf("%d",sizeof(a));
 
     return 0;
     }
